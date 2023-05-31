@@ -1,5 +1,5 @@
 <template>
-  <div class="home">Home Page</div>
+  <div class="basket">Basket Page</div>
 </template>
 
 <script setup></script>
