@@ -1,6 +1,6 @@
 <template>
   <div class="appHeader">
-    <div class="logo">Logo {{ show }}</div>
+    <div class="logo">Logo</div>
     <div class="box">
       <div class="badge">1</div>
       <svg
@@ -21,12 +21,13 @@
           d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
         ></path>
       </svg>
+      <ShopContext @onGoBasket="show = false" v-if="show" />
     </div>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
-
+import ShopContext from "./ShopContext.vue";
 const show = ref(false);
 const onShow = () => {
   show.value = !show.value;
