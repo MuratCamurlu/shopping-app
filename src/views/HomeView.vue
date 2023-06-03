@@ -10,7 +10,7 @@
         {{ item }}
       </div>
     </div>
-    <div class="order">Sort</div>
+    <div>Sort</div>
   </div>
   <div class="flex">
     <div v-for="item in products">{{ item.id }}</div>
@@ -18,8 +18,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-const activeCategory = ref("");
+import { ref, onMounted, watch } from "vue";
+const activeCategory = ref(null);
 const categories = ref([]);
 const products = ref([]);
 
@@ -30,15 +30,27 @@ const fetchData = async () => {
   console.log(categories.value);
 };
 const fetchProducts = async () => {
-  const response = await fetch("https://fakestoreapi.com/products");
+  const response = await fetch("https://fakestoreapi.com/products?sort=");
   const jsonData = await response.json();
-
   products.value = jsonData;
-  console.log(products.value);
+};
+const fetchProductsByCategories = async (product) => {
+  const response = await fetch(
+    "https://fakestoreapi.com/products/category/" + product
+  );
+  const jsonData = await response.json();
+  products.value = jsonData;
 };
 
 onMounted(fetchData);
 onMounted(fetchProducts);
+watch(activeCategory, (newVal) => {
+  if (newVal === "") {
+    fetchProducts();
+  } else {
+    fetchProductsByCategories(newVal);
+  }
+});
 </script>
 <style scoped>
 .filterWrapper {
