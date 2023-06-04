@@ -30,13 +30,7 @@
           d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
         ></path>
       </svg>
-      <ShopContext
-        v-for="item in choseBadge"
-        :key="item.id"
-        :item="item"
-        @onGoBasket="show = false"
-        v-if="show"
-      />
+      <ShopContext :item="choseBadge" @onGoBasket="show = false" v-if="show" />
     </div>
   </div>
   <div class="flex">
@@ -62,7 +56,6 @@ const categories = ref([]);
 const products = ref([]);
 const onItemFunct = (e) => {
   choseBadge.value.push(e);
-  console.log(choseBadge);
 };
 const fetchData = async () => {
   const response = await fetch("https://fakestoreapi.com/products/categories");
@@ -100,6 +93,7 @@ watch(activeCategory, (newVal) => {
   margin-bottom: 20px;
   justify-content: space-between;
 }
+
 .flex {
   display: flex;
   justify-content: space-between;

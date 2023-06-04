@@ -1,15 +1,17 @@
 <template>
   <div class="contextWrapper">
-    <div class="contextItem">
+    <div v-for="data in item" :key="data.id" class="contextItem">
       <div class="image">
-        <img :src="item.image" />
+        <img :src="data.image" />
       </div>
       <div class="content">
-        <div class="title">{{ item.title }}</div>
-        <div class="price">{{ item.price }}$</div>
+        <div class="title">{{ data.title }}</div>
+        <div class="price">{{ data.price }}$</div>
       </div>
     </div>
-    <div class="complateBox" @click="goBasket">Go to Basket</div>
+    <div class="contextItem complateBox" @click="goBasket">
+      Complete The Shopping
+    </div>
   </div>
 </template>
 <script setup>
@@ -35,13 +37,12 @@ const goBasket = () => {
   border-radius: 10px;
   max-width: 600px;
   min-width: 250px;
-
-  border: 1px solid red;
 }
 .contextItem {
   display: flex;
   padding-left: 16px;
   padding-right: 16px;
+  border-bottom: 1px solid grey;
 }
 .image {
   margin-right: 12px;

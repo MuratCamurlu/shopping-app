@@ -1,6 +1,7 @@
 <template>
   <div class="appHeader">
     <div class="logo">Logo</div>
+    <div>THE ADDRESS OF SHOPPING SINCE 1980</div>
   </div>
 </template>
 <script setup></script>
