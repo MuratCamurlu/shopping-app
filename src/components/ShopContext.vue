@@ -2,23 +2,23 @@
   <div class="contextWrapper">
     <div class="contextItem">
       <div class="image">
-        <img src="" alt="" />
+        <img :src="item.image" />
       </div>
       <div class="content">
-        <div class="title">Header</div>
-        <div class="price">100$</div>
+        <div class="title">{{ item.title }}</div>
+        <div class="price">{{ item.price }}$</div>
       </div>
     </div>
-    <div class="contextItem complateBox" @click="goBasket">Go to Basket</div>
+    <div class="complateBox" @click="goBasket">Go to Basket</div>
   </div>
 </template>
 <script setup>
-import { useRouter } from "vue-router";
+import { defineProps } from "vue";
+const { item } = defineProps(["item"]);
 
-const router = useRouter();
 const emit = defineEmits(["onGoBasket"]);
+
 const goBasket = () => {
-  router.push("/basket");
   emit("onGoBasket");
 };
 </script>
@@ -35,6 +35,8 @@ const goBasket = () => {
   border-radius: 10px;
   max-width: 600px;
   min-width: 250px;
+
+  border: 1px solid red;
 }
 .contextItem {
   display: flex;
