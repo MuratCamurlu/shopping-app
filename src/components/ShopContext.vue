@@ -18,7 +18,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const emit = defineEmits(["onGoBasket"]);
 const goBasket = () => {
-  router.push("basket");
+  router.push("/basket");
   emit("onGoBasket");
 };
 </script>
