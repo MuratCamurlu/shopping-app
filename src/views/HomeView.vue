@@ -13,16 +13,25 @@
     <div>Sort</div>
   </div>
   <div class="flex">
-    <div v-for="item in products">{{ item.id }}</div>
+    <ProductCard
+      @onItemBox="onItemFunct($event)"
+      v-for="item in products"
+      :item="item"
+    />
+    <!-- <div v-for="item in products">{{ item.id }}</div> -->
   </div>
 </template>
 
 <script setup>
+import ProductCard from "@/components/ProductCard.vue";
 import { ref, onMounted, watch } from "vue";
+
 const activeCategory = ref(null);
 const categories = ref([]);
 const products = ref([]);
-
+const onItemFunct = (e) => {
+  alert(e);
+};
 const fetchData = async () => {
   const response = await fetch("https://fakestoreapi.com/products/categories");
   const jsonData = await response.json();
