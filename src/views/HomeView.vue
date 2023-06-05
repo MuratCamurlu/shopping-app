@@ -33,7 +33,7 @@
       <ShopContext :item="choseBadge" @onGoBasket="show = false" v-if="show" />
     </div>
   </div>
-  <div class="flex">
+  <div class="bottomflex">
     <ProductCard
       @onItemBox="onItemFunct($event)"
       v-for="item in products"
@@ -64,7 +64,7 @@ const fetchData = async () => {
   console.log(categories.value);
 };
 const fetchProducts = async () => {
-  const response = await fetch("https://fakestoreapi.com/products?sort=");
+  const response = await fetch("https://fakestoreapi.com/products");
   const jsonData = await response.json();
   products.value = jsonData;
 };
@@ -94,12 +94,13 @@ watch(activeCategory, (newVal) => {
   justify-content: space-between;
 }
 
-.flex {
+.bottomflex {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  margin-top: 16px;
 }
 .topFlex {
   display: flex;

@@ -58,11 +58,15 @@ onMounted(() => {
 </script>
 <style scoped>
 .productDetailCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 100%;
   background-color: #fff;
   border: 1px solid grey;
   border-radius: 20px;
-  display: flex;
-  padding: 20px;
 }
 .imageSection {
   margin-right: 32px;
